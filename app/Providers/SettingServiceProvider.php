@@ -36,7 +36,7 @@ class SettingServiceProvider extends ServiceProvider
             $settings = Setting::all();
 
             foreach ($settings as $key => $setting) {
-                Config::set('settings.' . $settings->key, $settings->value);
+                Config::set('settings.' . $setting->key, $setting->value);
             }
         }
     }

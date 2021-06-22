@@ -34,11 +34,12 @@ class CategoryRepository extends BaseRepository implements CategoryContract
     /**
      * @param int $id
      * @return mixed
+     * @throws ModelNotFoundException
      */
     public function findCategoryById(int $id)
     {
         try {
-            return $this->findOneByOrFail($id);
+            return $this->findOneOrFail($id);
         } catch (ModelNotFoundException $e) {
 
             throw new ModelNotFoundException($e);
@@ -47,7 +48,7 @@ class CategoryRepository extends BaseRepository implements CategoryContract
 
     /**
      * @param array $params
-     * @return mixed
+     * @return Category|mixed
      */
     public function createCategory(array $params)
     {
@@ -81,7 +82,7 @@ class CategoryRepository extends BaseRepository implements CategoryContract
      */
     public function updateCategory(array $params)
     {
-        $category = $this->findBrandById($params['id']);
+        $category = $this->findCategoryById($params['id']);
 
         $collection = collect($params)->except('_token');
 
@@ -91,7 +92,7 @@ class CategoryRepository extends BaseRepository implements CategoryContract
                 $this->deleteOne($category->image);
             }
 
-            $logo = $this->uploadOne($params['image'], 'categories');
+            $image = $this->uploadOne($params['image'], 'categories');
         }
 
         $featured = $collection->has('featured') ? 1 : 0;
@@ -106,11 +107,11 @@ class CategoryRepository extends BaseRepository implements CategoryContract
 
     /**
      * @param $id
-     * @return bool
+     * @return bool|mixed
      */
     public function deleteCategory($id)
     {
-        $category = $this->findBrandById($id);
+        $category = $this->findCategoryById($id);
 
         if ($category->image != null) {
             $this->deleteOne($category->image);

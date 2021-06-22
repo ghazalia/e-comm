@@ -38,7 +38,7 @@ class BrandRepository extends BaseRepository implements BrandContract
     public function findBrandById(int $id)
     {
         try {
-            return $this->findOneByOrFail($id);
+            return $this->findOneOrFail($id);
         } catch (ModelNotFoundException $e) {
 
             throw new ModelNotFoundException($e);

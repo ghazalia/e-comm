@@ -28,4 +28,13 @@ class RepositoryServiceProvider extends ServiceProvider
             $this->app->bind($interface, $implementation);
         }
     }
+
+    /**
+     * Bootstrap services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+    }
 }
