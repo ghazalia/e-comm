@@ -181,6 +181,7 @@ return [
          * MyApplication Service Provider
          */
         App\Providers\SettingServiceProvider::class,
+        App\Providers\RepositoryServiceProvider::class,
 
     ],
 
