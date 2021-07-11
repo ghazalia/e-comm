@@ -6,6 +6,7 @@ use App\Contracts\BrandContract;
 use App\Contracts\CategoryContract;
 use App\Contracts\AttributeContract;
 use App\Repositories\BrandRepository;
+use App\Repositories\AttributeRepository;
 use App\Repositories\CategoryRepository;
 use Illuminate\Support\ServiceProvider;
 
