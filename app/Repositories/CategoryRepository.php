@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Contract\CategoryContract;
+use App\Contracts\CategoryContract;
 use App\Traits\UploadAble;
 use Illuminate\Http\UploadedFile;
 use App\Models\Category;
